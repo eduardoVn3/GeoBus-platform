@@ -4,11 +4,11 @@ module.exports = (sequelize, DataTypes) => {
     name: {
     	type:DataTypes.STRING,
     	validate:{
-	        notEmpty:{
-	          args:true,
-	          msg:'Error el campo no puede quedar vacio'
-	        }
-      	}
+	       notEmpty:{
+	         args:true,
+	         msg:'Error el campo no puede quedar vacio'
+	       }
+      }
     },
   }, {});
   TypeFavoritePlace.associate = function(models) {

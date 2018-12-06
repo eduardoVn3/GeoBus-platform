@@ -41,6 +41,7 @@ DB.FavoritePlace = require('../models/favoriteplace.js')(SEQUELIZE,Sequelize);
 DB.TypeFavoritePlace = require('../models/typefavoriteplace.js')(SEQUELIZE,Sequelize);
 DB.Coordinate = require('../models/coordinate.js')(SEQUELIZE,Sequelize);
 DB.CoordinateDetail = require('../models/coordinatedetail.js')(SEQUELIZE,Sequelize);
+DB.TravelProgramming = require('../models/travelprogramming.js')(SEQUELIZE,Sequelize);
 //associations
 
 //company and trasport unit one-to-many
@@ -66,7 +67,22 @@ DB.FavoritePlace.belongsTo(DB.User,{ foreignKey: 'user_id', targetKey: 'id'})
 //favorite place and type favorite place one-to-one
 DB.FavoritePlace.belongsTo(DB.TypeFavoritePlace, {foreignKey: 'type_place', targetKey: 'id'});
 
+//favorite place and coordenite detail one-to-one
+DB.FavoritePlace.belongsTo(DB.CoordinateDetail, {foreignKey: 'coodinateDetail_id', targetKey: 'id'});
+
 //coordinate and coordinate detail one-to-one
 DB.CoordinateDetail.belongsTo(DB.Coordinate, {foreignKey: 'coordinate_id', targetKey: 'id'});
+
+//travel programming and coordinate detail
+//output_coordinate
+DB.TravelProgramming.belongsTo(DB.CoordinateDetail, {foreignKey: 'outputCoordinate_id', targetKey: 'id'});
+//arrival_cooridnate
+DB.TravelProgramming.belongsTo(DB.CoordinateDetail, {foreignKey: 'arrivalCoordinate_id', targetKey: 'id'});
+//nearestStationCoordinate_id
+DB.TravelProgramming.belongsTo(DB.CoordinateDetail, {foreignKey: 'nearestStationCoordinate_id', targetKey: 'id'});
+
+//user and travel programming one-to-many
+DB.User.hasMany(DB.TravelProgramming,{ foreignKey: 'user_id', sourceKey: 'id'})
+DB.TravelProgramming.belongsTo(DB.User,{ foreignKey: 'user_id', targetKey: 'id'})
 
 export default DB;

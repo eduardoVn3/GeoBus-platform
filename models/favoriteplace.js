@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    detailCoordinate_id: {
+    coordinateDetail_id: {
       type:DataTypes.UUID,
       validate:{
         notEmpty:{

@@ -23,7 +23,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.UUID
       },
-      detailCoordinate_id: {
+      coordinateDetail_id: {
         allowNull: false,
         type: Sequelize.UUID
       },
