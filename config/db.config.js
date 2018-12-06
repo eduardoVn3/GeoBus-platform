@@ -38,7 +38,7 @@ DB.Drivers_transportsUnit = require('../models/drivers_transportunit.js')(SEQUEL
 DB.Route = require('../models/route.js')(SEQUELIZE,Sequelize);
 DB.User = require('../models/user.js')(SEQUELIZE,Sequelize);
 DB.FavoritePlace = require('../models/favoriteplace.js')(SEQUELIZE,Sequelize);
-DB.TypeFavoritePlace = require('../models/favoriteplace.js')(SEQUELIZE,Sequelize);
+DB.TypeFavoritePlace = require('../models/typefavoriteplace.js')(SEQUELIZE,Sequelize);
 //associations
 
 //company and trasport unit one-to-many
@@ -62,6 +62,6 @@ DB.User.hasMany(DB.FavoritePlace,{ foreignKey: 'user_id', sourceKey: 'id'})
 DB.FavoritePlace.belongsTo(DB.User,{ foreignKey: 'user_id', targetKey: 'id'})
 
 //favorite place and type favorite place one-to-one
-// DB.FavoritePlace.belongsTo(DB.TypeFavoritePlace, {foreignKey: 'type_place'});
-// DB.TypeFavoritePlace.belongsTo(DB.FavoritePlace,{ foreignKey: 'type_place'})
-export default DB
+DB.FavoritePlace.belongsTo(DB.TypeFavoritePlace, {foreignKey: 'type_place', targetKey: 'id'});
+
+export default DB;
