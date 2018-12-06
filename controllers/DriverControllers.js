@@ -1,10 +1,10 @@
-'use strict'
+'use stric';
 import response from '../helpers/response.js';
 import models from '.././config/db.config.js';
 
-var rol = models.Rol
+var driver = models.Driver;
 export function index(req,res) {
-	rol.findAll()
+	driver.findAll()
 	.then(result=>{
 		return res.json(response.success(result))
 	}).catch(err=>{
@@ -13,7 +13,7 @@ export function index(req,res) {
 }
 
 export function show(req,res) {
-	rol.findById(req.params.id)
+	driver.findById(req.params.id)
 	.then(result=>{
 		return res.json(response.success(result))
 	}).catch(err=>{
@@ -22,7 +22,7 @@ export function show(req,res) {
 }
 
 export function store (req, res) {
-	rol.create(req.body)
+	driver.create(req.body)
 	.then(result=>{
 		return res.json(response.success(result))
 	}).catch(err=>{
@@ -31,14 +31,9 @@ export function store (req, res) {
 }
 
 export function update (req, res) {
-	var data = {
-		name : req.body.name
-	}
-	rol.update({
-		name:req.body.name
-	},{
+	driver.update(req.body,{
 		where:{
-			id:req.body.id
+			id:req.params.id
 		}
 	})
 	.then(result=>{
@@ -48,5 +43,20 @@ export function update (req, res) {
 		return res.json(response.success('Cambio realizado con exito'))
 	}).catch(err=>{
 		return res.json(response.errorValidate(err));
+	});
+}
+
+export function deleted (req, res) {
+	driver.destroy({
+		where:{
+			id:req.params.id
+		}
+	}).then(result=>{
+		if(result === 0){
+			return res.json(response.error('Ha ocurrido un error',400))
+		}
+		return res.json(response.success('Cambio realizado con exito'))
+	}).catch(err=>{
+		return res.json(response.error(err));
 	})
 }

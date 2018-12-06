@@ -1,14 +1,19 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Rols', {
+    return queryInterface.createTable('Drivers_transportUnits', {
       id: {
         allowNull: false,
         primaryKey: true,
         type: Sequelize.UUID
       },
-      name: {
-        type: Sequelize.STRING
+      driver_id: {
+        allowNull: false,
+        type: Sequelize.UUID
+      },
+      transportUnit_id: {
+        allowNull: false,
+        type: Sequelize.UUID
       },
       createdAt: {
         allowNull: false,
@@ -21,6 +26,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Rols');
+    return queryInterface.dropTable('Drivers_transportUnits');
   }
 };
