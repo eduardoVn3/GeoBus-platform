@@ -39,6 +39,8 @@ DB.Route = require('../models/route.js')(SEQUELIZE,Sequelize);
 DB.User = require('../models/user.js')(SEQUELIZE,Sequelize);
 DB.FavoritePlace = require('../models/favoriteplace.js')(SEQUELIZE,Sequelize);
 DB.TypeFavoritePlace = require('../models/typefavoriteplace.js')(SEQUELIZE,Sequelize);
+DB.Coordinate = require('../models/coordinate.js')(SEQUELIZE,Sequelize);
+DB.CoordinateDetail = require('../models/coordinatedetail.js')(SEQUELIZE,Sequelize);
 //associations
 
 //company and trasport unit one-to-many
@@ -63,5 +65,8 @@ DB.FavoritePlace.belongsTo(DB.User,{ foreignKey: 'user_id', targetKey: 'id'})
 
 //favorite place and type favorite place one-to-one
 DB.FavoritePlace.belongsTo(DB.TypeFavoritePlace, {foreignKey: 'type_place', targetKey: 'id'});
+
+//coordinate and coordinate detail one-to-one
+DB.CoordinateDetail.belongsTo(DB.Coordinate, {foreignKey: 'coordinate_id', targetKey: 'id'});
 
 export default DB;
