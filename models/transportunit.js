@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
-    lincensePlate: {
+    licensePlate: {
       type:DataTypes.STRING,
       validate:{
         notEmpty:{

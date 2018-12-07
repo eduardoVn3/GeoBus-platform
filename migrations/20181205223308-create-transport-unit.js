@@ -14,7 +14,7 @@ module.exports = {
       numberUnit: {
         type: Sequelize.INTEGER
       },
-      lincensePlate: {
+      licensePlate: {
         type: Sequelize.STRING
       },
       company_id: {

@@ -55,7 +55,7 @@ export function deleted (req, res) {
 		if(result === 0){
 			return res.json(response.error('Ha ocurrido un error',400))
 		}
-		return res.json(response.success('Cambio realizado con exito'))
+		return res.json(response.success('Eliminado con exito'))
 	}).catch(err=>{
 		return res.json(response.error(err));
 	})

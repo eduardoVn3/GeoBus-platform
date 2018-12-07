@@ -83,7 +83,7 @@ ROUTER.delete('/coordinate/delete/:id',ctrl.CoordinateControllers.deleted);
 ROUTER.get('/coordinateDetail',ctrl.CoordinateDetailControllers.index);
 ROUTER.get('/coordinateDetail/:id',ctrl.CoordinateDetailControllers.show);
 ROUTER.post('/coordinateDetail/new',ctrl.CoordinateDetailControllers.store);
-ROUTER.put('/coordinateDetail/update/:id',ctrlCoordinateDetailControllers.update);
+ROUTER.put('/coordinateDetail/update/:id',ctrl.CoordinateDetailControllers.update);
 ROUTER.delete('/coordinateDetail/delete/:id',ctrl.CoordinateDetailControllers.deleted);
 
 
