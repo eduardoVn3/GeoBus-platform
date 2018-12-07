@@ -25,7 +25,7 @@ APP.use(function(req,res,next) {
 })
 
 db.SEQUELIZE.sync({
-	force: true
+	// force: true
 }).then(()=>{
 	console.log('Drop and Resync with { force: true }');
 }).catch(err=>{
